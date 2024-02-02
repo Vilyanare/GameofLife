@@ -3,14 +3,17 @@
 #include<ctime>
 using namespace std;
 
+/**/
+
+//Function that initializes a board to all 0's
 int *dead_state (int *board, int height, int width) {
     memset(board, 0, (height * width) * sizeof(int));
     return board;
 }
 
+//Function that initializes a board with random states
 int *random_state (int *board, int height, int width) {
     srand(time(0));
-    board = dead_state(board, height, width);
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
             board[(x * width) + y] = rand() % 2;
