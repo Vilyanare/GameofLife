@@ -22,10 +22,30 @@ int *random_state (int *board, int height, int width) {
     return board;
 }
 
+//Function to pretty print a board state.  1 = # 0 = " "
+void render_board(int *board, int height, int width) {
+    for (int x = 0; x < width + 2; x++) {
+        cout << "-";
+    }
+    cout << endl;
+    for (int x = 0; x < width; x++)  {
+        cout << "|";
+        for (int y = 0; y < height; y++) {
+            cout << ((board[(x * width) + y]) ? "#" : " ");
+        }
+        cout << "|" << endl;
+    }
+    for (int x = 0; x < width + 2; x++) {
+        cout << "-";
+    }
+    cout << endl;
+}
+
 int main () {
     int width = 5, height = 5;
     int board[width][height];
-    random_state(*board, width, height);
+    random_state(*board, height, width);
+    render_board(*board, height, width);
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
             cout << board[x][y] << " ";
